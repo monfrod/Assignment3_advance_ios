@@ -8,14 +8,14 @@ import Foundation
 import SwiftUI
 
 struct TabBar: View {
-    
+    let heroManager = HeroManager()
     var body: some View {
         TabView{
-            MainView(heroManager: HeroManager(), dataManager: DataManager())
+            MainView(heroManager: heroManager, dataManager: DataManager())
                 .tag(1)
                 .tabItem {
                     VStack{
-                        Image(systemName: "house")
+                        Image(systemName: "arrow.trianglehead.2.clockwise")
                         Text("Heroes")
                     }
                 }
@@ -26,6 +26,15 @@ struct TabBar: View {
                         Image(systemName: "heart.fill")
                             .foregroundStyle(.red)
                         Text("Favorites")
+                    }
+                }
+            SearchView(heroManager: heroManager)
+                .tag(3)
+                .tabItem {
+                    VStack{
+                        Image(systemName: "magnifyingglass")
+                            .foregroundStyle(.red)
+                        Text("Search hero")
                     }
                 }
         }

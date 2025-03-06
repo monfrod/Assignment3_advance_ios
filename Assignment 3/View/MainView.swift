@@ -84,7 +84,7 @@ struct MainView: View {
                         if isFavorite == false {
                             dataManager.addFavoriteHero(hero: hero)
                         }
-                        isFavorite.toggle()
+                        isFavorite = true
                         print("add to favorites: \(isFavorite)")
                     } label: {
                         Image(systemName: isFavorite ? "heart.fill" : "heart")

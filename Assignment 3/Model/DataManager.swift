@@ -34,6 +34,24 @@ final class DataManager: ObservableObject {
         saveContext()
         getAllHeroes()
     }
+    func addFavoriteHero2(hero: Hero2){
+        let newHero = HeroEntity(context: context)
+        newHero.name = hero.name
+        newHero.gender = hero.appearance.gender
+        newHero.race = hero.appearance.race
+        newHero.height = hero.appearance.height[1]
+        newHero.weight = hero.appearance.weight[1]
+        newHero.intelligence = Int16(hero.powerstats.intelligence) ?? 0
+        newHero.strength = Int16(hero.powerstats.strength) ?? 0
+        newHero.speed = Int16(hero.powerstats.speed) ?? 0
+        newHero.durability = Int16(hero.powerstats.durability) ?? 0
+        newHero.power = Int16(hero.powerstats.power) ?? 0
+        newHero.combat = Int16(hero.powerstats.combat) ?? 0
+        newHero.imageURL = hero.image.url
+        
+        saveContext()
+        getAllHeroes()
+    }
     
     func getAllHeroes(){
         let fetchingHeroes = HeroEntity.fetchRequest()
